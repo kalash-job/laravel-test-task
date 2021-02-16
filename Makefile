@@ -20,3 +20,8 @@ lint:
 
 lint-fix:
 	composer run-script phpcbf
+
+seed:
+	php artisan migrate:refresh
+	php artisan db:seed --class="RegionsTableSeeder"
+	php artisan db:seed --class="UsersTableSeeder"
