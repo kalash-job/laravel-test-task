@@ -19,9 +19,14 @@
                 <tr>
                     <td>{{$user->id}}</td>
                     <td>
-                        <a href="{{route('users.show', $user)}}">
+                        @auth
+                            <a href="{{route('users.show', $user)}}">
+                                {{$user->name}}
+                            </a>
+                        @endauth
+                        @guest
                             {{$user->name}}
-                        </a>
+                        @endguest
                     </td>
                     <td>{{$user->created_at->format('d.m.Y')}}</td>
                     @auth
