@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\{User, Region};
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -48,7 +49,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         $user->fill($request->all());
         if ($request->file('image')) {
