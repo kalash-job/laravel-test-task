@@ -1,6 +1,6 @@
 <h1>Тестовое задание "Форма для вывода и изменения данных пользователя (Laravel)"</h1>
 
-<a href="https://laravel-test-task-form.herokuapp.com/">Ссылка на проект, выложенный на heroku</a>
+<a href="http://laravel-test-task-form.herokuapp.com/">Ссылка на проект, выложенный на heroku</a>
 
 Что требуется: 
 
