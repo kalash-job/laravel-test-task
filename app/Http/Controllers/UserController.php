@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\{User, Region};
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -37,7 +37,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $regions = Region::getRegionsForForm();
+        return view('user.edit', compact('user', 'regions'));
     }
 
     /**
@@ -49,6 +50,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->fill($request->all());
+        if ($request->file('image')) {
+            $user->avatar_path = $request->file('image')->store('uploads', 'public');
+        }
+        $user->save();
+        flash('Данные пользователя успешно обновлены', 'success');
+        return redirect()->route('users.show', $user);
     }
 }

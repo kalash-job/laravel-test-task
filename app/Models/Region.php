@@ -22,4 +22,13 @@ class Region extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public static function getRegionsForForm(): array
+    {
+        return self::all()
+            ->mapWithKeys(function ($item) {
+                return [$item['id'] => $item['name']];
+            })
+            ->toArray();
+    }
 }
