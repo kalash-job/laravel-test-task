@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\{User, Region};
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,6 +14,10 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
+        $region = Region::first();
+        User::factory()
+                ->count(5)
+                ->for($region)
+                ->create();
     }
 }

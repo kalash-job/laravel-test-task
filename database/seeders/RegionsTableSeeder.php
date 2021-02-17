@@ -23,9 +23,7 @@ class RegionsTableSeeder extends Seeder
             'Москва',
         ];
         foreach ($regions as $regionValue) {
-            $region = new Region();
-            $region->fill(['name' => $regionValue]);
-            $region->save();
+            Region::create(['name' => $regionValue]);
         }
     }
 }
