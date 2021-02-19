@@ -38,6 +38,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         $regions = Region::getRegionsForForm();
         return view('user.edit', compact('user', 'regions'));
     }
@@ -51,6 +52,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
         $user->fill($request->all());
         if ($request->file('image')) {
             $user->avatar_path = $request->file('image')->store('uploads', 'public');
